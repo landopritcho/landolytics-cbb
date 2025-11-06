@@ -9,6 +9,7 @@ func convertESPNGame(eg espn.ParsedGame) Game {
 		LongDate:   eg.LongDate,
 		LongTitle:  eg.LongTitle,
 		ShortTitle: eg.ShortTitle,
+		EventTitle: eg.EventTitle,
 		Venue: Venue{
 			Name:     eg.VenueName,
 			City:     eg.VenueCity,
@@ -37,5 +38,6 @@ func convertESPNGame(eg espn.ParsedGame) Game {
 		},
 		IsNeutralSite:    eg.IsNeutralSite,
 		IsConferenceGame: eg.IsConferenceGame,
+		IsSpecialEvent:   eg.IsSpecialEvent,
 	}
 }

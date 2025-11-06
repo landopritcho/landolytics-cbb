@@ -55,6 +55,12 @@ func parseEvent(event Event, date string) ParsedGame {
 		game.VenueLocation = fmt.Sprintf("%s, %s", comp.VenueInfo.Location.City, comp.VenueInfo.Location.State)
 		game.IsNeutralSite = comp.NeutralSite
 		game.IsConferenceGame = comp.ConferenceGame
+		if len(comp.Notes) > 0 && strings.ToLower(comp.Notes[0].Type) == "event" {
+			game.IsSpecialEvent = true
+			game.EventTitle = comp.Notes[0].Headline
+		} else {
+			game.IsSpecialEvent = false
+		}
 
 		for _, team := range comp.Teams {
 			parsedTeam := parseTeam(team)

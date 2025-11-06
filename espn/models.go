@@ -10,8 +10,10 @@ type ParsedGame struct {
 	VenueCity        string
 	VenueState       string
 	VenueLocation    string
+	EventTitle       string
 	IsNeutralSite    bool
 	IsConferenceGame bool
+	IsSpecialEvent   bool
 	HomeTeam         ParsedTeam
 	AwayTeam         ParsedTeam
 }

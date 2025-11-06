@@ -6,11 +6,13 @@ type Game struct {
 	LongDate         string
 	LongTitle        string
 	ShortTitle       string
+	EventTitle       string
 	Venue            Venue
 	HomeTeam         Team
 	AwayTeam         Team
 	IsNeutralSite    bool
 	IsConferenceGame bool
+	IsSpecialEvent   bool
 }
 
 type Team struct {

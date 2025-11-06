@@ -35,6 +35,10 @@ type Competition struct {
 	ConferenceGame bool   `json:"conferenceCompetition"`
 	VenueInfo      Venue  `json:"venue"`
 	Teams          []Team `json:"competitors"`
+	Notes          []struct {
+		Type     string `json:"type"`
+		Headline string `json:"headline"`
+	} `json:"notes"`
 }
 
 type Status struct {
