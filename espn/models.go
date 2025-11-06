@@ -1,19 +1,22 @@
-package cbb
+package espn
 
-type Game struct {
+type ParsedGame struct {
 	Date             string
-	Time             string
 	LongDate         string
+	Time             string
 	LongTitle        string
 	ShortTitle       string
-	Venue            Venue
-	HomeTeam         Team
-	AwayTeam         Team
+	VenueName        string
+	VenueCity        string
+	VenueState       string
+	VenueLocation    string
 	IsNeutralSite    bool
 	IsConferenceGame bool
+	HomeTeam         ParsedTeam
+	AwayTeam         ParsedTeam
 }
 
-type Team struct {
+type ParsedTeam struct {
 	School         string
 	Mascot         string
 	Abbreviation   string
@@ -22,11 +25,4 @@ type Team struct {
 	PrimaryColor   string
 	AlternateColor string
 	Rank           string
-}
-
-type Venue struct {
-	Name     string
-	City     string
-	State    string
-	Location string
 }
