@@ -7,11 +7,7 @@ import (
 )
 
 const (
-	espnAPIBaseURL = "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard"
-
-	defaultSeasonType = "2"
-
-	defaultGroup = "50"
+	espnAllSchedulesBaseUrl = "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?seasontype=2&groups=50"
 )
 
 func fetchJSON(url string) ([]byte, error) {
@@ -33,11 +29,9 @@ func fetchJSON(url string) ([]byte, error) {
 	return body, nil
 }
 
-func buildScheduleURL(date string) string {
-	return fmt.Sprintf("%s?dates=%s&seasontype=%s&groups=%s",
-		espnAPIBaseURL,
+func buildAllSchedulesUrl(date string) string {
+	return fmt.Sprintf("%s&dates=%s",
+		espnAllSchedulesBaseUrl,
 		date,
-		defaultSeasonType,
-		defaultGroup,
 	)
 }

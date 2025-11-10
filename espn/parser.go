@@ -8,7 +8,7 @@ import (
 )
 
 func FetchSchedule(date string) ([]ParsedGame, error) {
-	url := buildScheduleURL(date)
+	url := buildAllSchedulesUrl(date)
 
 	jsonData, err := fetchJSON(url)
 	if err != nil {
