@@ -27,3 +27,17 @@ func FetchSchedule(date string) ([]Game, error) {
 
 	return games, nil
 }
+
+func FetchTeams() ([]InternalTeam, error) {
+	espnTeams, err := espn.FetchTeams()
+	if err != nil {
+		return nil, fmt.Errorf("failed to fetch teams: %w", err)
+	}
+
+	teams := make([]InternalTeam, len(espnTeams))
+	for i, et := range espnTeams {
+		teams[i] = convertESPNTeam(et)
+	}
+
+	return teams, nil
+}

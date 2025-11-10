@@ -32,3 +32,12 @@ type Venue struct {
 	State    string
 	Location string
 }
+
+type InternalTeam struct {
+	Id               string
+	Slug             string
+	Abbreviation     string
+	DisplayName      string
+	ShortDisplayName string
+	Mascot           string
+}

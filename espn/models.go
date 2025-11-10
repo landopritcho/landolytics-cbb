@@ -28,3 +28,12 @@ type ParsedTeam struct {
 	AlternateColor string
 	Rank           string
 }
+
+type InternalParsedTeam struct {
+	Id               string
+	Slug             string
+	Abbreviation     string
+	DisplayName      string
+	ShortDisplayName string
+	Mascot           string
+}

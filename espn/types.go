@@ -9,6 +9,25 @@ type Response struct {
 	} `json:"day"`
 }
 
+type TeamsResponse struct {
+	Sports []struct {
+		Leagues []struct {
+			Teams []struct {
+				Team InternalTeam `json:"team"`
+			} `json:"teams"`
+		} `json:"leagues"`
+	} `json:"sports"`
+}
+
+type InternalTeam struct {
+	Id               string `json:"id"`
+	Slug             string `json:"slug"`
+	Abbreviation     string `json:"abbreviation"`
+	DisplayName      string `json:"displayName"`
+	ShortDisplayName string `json:"shortDisplayName"`
+	Mascot           string `json:"name"`
+}
+
 type Event struct {
 	Name         string        `json:"name"`
 	ShortName    string        `json:"shortName"`

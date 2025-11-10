@@ -23,6 +23,48 @@ func FetchSchedule(date string) ([]ParsedGame, error) {
 	return games, nil
 }
 
+func FetchTeams() ([]InternalParsedTeam, error) {
+	url := espnAllTeamsUrl
+
+	jsonData, err := fetchJSON(url)
+	if err != nil {
+		return nil, err
+	}
+
+	teams, err := parseInternalTeamData(jsonData)
+	if err != nil {
+		return nil, fmt.Errorf("failed to parse teams: %w", err)
+	}
+
+	return teams, nil
+}
+
+func parseInternalTeamData(data []byte) ([]InternalParsedTeam, error) {
+	var response TeamsResponse
+	if err := json.Unmarshal(data, &response); err != nil {
+		return nil, fmt.Errorf("json unmarshal failed: %w", err)
+	}
+
+	var teams []InternalParsedTeam
+	for _, sport := range response.Sports {
+		for _, league := range sport.Leagues {
+			for _, teamWrapper := range league.Teams {
+				team := InternalParsedTeam{
+					Id:               teamWrapper.Team.Id,
+					Slug:             teamWrapper.Team.Slug,
+					Abbreviation:     teamWrapper.Team.Abbreviation,
+					DisplayName:      teamWrapper.Team.DisplayName,
+					ShortDisplayName: teamWrapper.Team.ShortDisplayName,
+					Mascot:           teamWrapper.Team.Mascot,
+				}
+				teams = append(teams, team)
+			}
+		}
+	}
+
+	return teams, nil
+}
+
 func parseSchedule(data []byte) ([]ParsedGame, error) {
 	var response Response
 	if err := json.Unmarshal(data, &response); err != nil {

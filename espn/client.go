@@ -8,6 +8,7 @@ import (
 
 const (
 	espnAllSchedulesBaseUrl = "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?seasontype=2&groups=50"
+	espnAllTeamsUrl         = "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/teams?limit=400"
 )
 
 func fetchJSON(url string) ([]byte, error) {

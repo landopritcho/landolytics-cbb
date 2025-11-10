@@ -41,3 +41,14 @@ func convertESPNGame(eg espn.ParsedGame) Game {
 		IsSpecialEvent:   eg.IsSpecialEvent,
 	}
 }
+
+func convertESPNTeam(et espn.InternalParsedTeam) InternalTeam {
+	return InternalTeam{
+		Id:               et.Id,
+		Slug:             et.Slug,
+		Abbreviation:     et.Abbreviation,
+		DisplayName:      et.DisplayName,
+		ShortDisplayName: et.ShortDisplayName,
+		Mascot:           et.Mascot,
+	}
+}
